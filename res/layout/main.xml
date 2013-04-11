@@ -11,7 +11,7 @@
               android:paddingBottom="10dp">
 
         <TextView android:text="@string/pan_number"
-                  android:textSize="18sp"
+                  android:textSize="17sp"
                   android:textColor="@android:color/primary_text_dark"
                   android:paddingLeft="5dp"
                   android:paddingRight="10dp"
@@ -21,7 +21,7 @@
 
         <EditText android:id="@+id/pan_number"
                   android:hint="@string/pan_hint"
-                  android:textSize="18sp"
+                  android:textSize="17sp"
                   android:textColor="@android:color/primary_text_light"
                   android:paddingLeft="5dp"
                   android:layout_height="match_parent"
@@ -33,7 +33,7 @@
               android:paddingBottom="10dp">
 
         <TextView android:text="@string/assessment_year"
-                  android:textSize="18sp"
+                  android:textSize="17sp"
                   android:textColor="@android:color/primary_text_dark"
                   android:paddingLeft="5dp"
                   android:paddingRight="10dp"
@@ -43,7 +43,7 @@
 
         <EditText android:id="@+id/assessment_year"
                   android:hint="@string/assessment_year_hint"
-                  android:textSize="18sp"
+                  android:textSize="17sp"
                   android:textColor="@android:color/primary_text_dark"
                   android:paddingLeft="5dp"
                   android:layout_height="match_parent"

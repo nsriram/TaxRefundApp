@@ -5,6 +5,7 @@
               android:stretchColumns="1"
               android:paddingRight="5dp"
               android:paddingLeft="5dp"
+              android:paddingBottom="10dp"
               android:orientation="vertical">
     <TextView android:id="@+id/refund_header"
               android:textSize="24sp"
@@ -12,14 +13,18 @@
               android:paddingLeft="5dp"
               android:paddingRight="10dp"
               android:layout_height="wrap_content"
-              android:layout_width="wrap_content"/>
-    <TextView android:id="@+id/notification"
-              android:textSize="14sp"
+              android:layout_width="wrap_content"
+              android:gravity="center"
+            />
+    <TextView android:id="@+id/refund_status"
+              android:textSize="16sp"
               android:textColor="@android:color/darker_gray"
               android:paddingLeft="5dp"
               android:paddingRight="10dp"
+              android:paddingBottom="10dp"
               android:layout_height="wrap_content"
-              android:layout_width="wrap_content"/>
+              android:layout_width="wrap_content"
+              android:gravity="left"/>
     <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
                  android:layout_width="fill_parent"
                  android:layout_height="fill_parent"
@@ -71,31 +76,6 @@
                       android:layout_height="match_parent"
                       android:layout_width="wrap_content"
                       android:gravity="center_vertical"/>
-        </TableRow>
-        <View android:layout_height="1sp" android:background="#FF909090"/>
-        <TableRow android:id="@+id/status_row"
-                  android:paddingTop="10dp"
-                  android:paddingBottom="10dp">
-
-            <TextView android:text="@string/status"
-                      android:textSize="18sp"
-                      android:textColor="@android:color/primary_text_dark"
-                      android:paddingLeft="5dp"
-                      android:paddingRight="10dp"
-                      android:layout_height="match_parent"
-                      android:layout_width="wrap_content"
-                      android:gravity="left"/>
-
-            <TextView android:id="@+id/refund_status"
-                      android:textSize="12sp"
-                      android:textColor="@android:color/darker_gray"
-                      android:paddingLeft="5dp"
-                      android:paddingRight="10dp"
-                      android:layout_height="wrap_content"
-                      android:layout_width="wrap_content"
-                      android:maxLines="6"
-                      android:lines="6"
-                      android:gravity="left"/>
         </TableRow>
         <View android:layout_height="1sp" android:background="#FF909090"/>
         <TableRow android:id="@+id/date_row"

@@ -41,7 +41,6 @@ public class TaxRefundStatusActivity extends Activity {
         TextView headerView = (TextView) findViewById(R.id.refund_header);
         headerView.setText(panNumber + " (" + assessmentYear + ")");
 
-        TextView notification = (TextView) findViewById(R.id.notification);
         TextView paymentMode = (TextView) findViewById(R.id.payment_mode);
         TextView referenceNumber = (TextView) findViewById(R.id.reference_number);
         TextView refundStatus = (TextView) findViewById(R.id.refund_status);
@@ -70,15 +69,15 @@ public class TaxRefundStatusActivity extends Activity {
                 if (status.size() > 0) {
                     Elements data = status.select("td");
                     if (data.size() >= 4) {
-                        notification.setVisibility(View.INVISIBLE);
                         paymentMode.setText(data.get(0).text());
                         referenceNumber.setText(data.get(1).text());
                         refundStatus.setText(data.get(2).text());
                         refundDate.setText(data.get(3).text());
                     }
                 } else {
-                    notification.setVisibility(View.VISIBLE);
-                    notification.setText("PAN number not found");
+                    refundStatus.setText("Refund request for " + panNumber + " not found. \n\n" +
+                            "(a) Your assessing officer has not sent this refund to Refund Banker.\n" +
+                            "(b) If this refund has been sent by your Assessing Officer within the last week, you may wait for a week and again check status.\n");
                 }
             }
         } catch (Exception e) {
