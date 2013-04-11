@@ -2,10 +2,10 @@ package com.cdac.mobilecontest;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
-import android.webkit.WebView;
+import android.view.View;
+import android.widget.TableRow;
+import android.widget.TextView;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
@@ -18,7 +18,6 @@ import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.util.ArrayList;
@@ -39,6 +38,15 @@ public class TaxRefundStatusActivity extends Activity {
         String panNumber = (String) extras.get("panNumber");
         String assessmentYear = (String) extras.get("assessmentYear");
 
+        TextView headerView = (TextView) findViewById(R.id.refund_header);
+        headerView.setText(panNumber + " (" + assessmentYear + ")");
+
+        TextView notification = (TextView) findViewById(R.id.notification);
+        TextView paymentMode = (TextView) findViewById(R.id.payment_mode);
+        TextView referenceNumber = (TextView) findViewById(R.id.reference_number);
+        TextView refundStatus = (TextView) findViewById(R.id.refund_status);
+        TextView refundDate = (TextView) findViewById(R.id.refund_date);
+
         HttpClient httpclient = new DefaultHttpClient();
         HttpPost httppost = new HttpPost(REFUND_STATUS_URL);
         List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
@@ -57,33 +65,24 @@ public class TaxRefundStatusActivity extends Activity {
                 responseHTML = EntityUtils.toString(entity);
             }
             if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
-                /*
                 Document doc = Jsoup.parse(responseHTML);
                 Elements status = doc.select("table.statusTable");
-                Elements headers = status.select("th");
-                Elements data = status.select("td"); */
-
-                responseHTML = Uri.encode(responseHTML);
-                WebView viewer = (WebView) findViewById(R.id.refund_status_webview);
-                viewer.loadData(responseHTML, "text/html", "utf-8");
+                if (status.size() > 0) {
+                    Elements data = status.select("td");
+                    if (data.size() >= 4) {
+                        notification.setVisibility(View.INVISIBLE);
+                        paymentMode.setText(data.get(0).text());
+                        referenceNumber.setText(data.get(1).text());
+                        refundStatus.setText(data.get(2).text());
+                        refundDate.setText(data.get(3).text());
+                    }
+                } else {
+                    notification.setVisibility(View.VISIBLE);
+                    notification.setText("PAN number not found");
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-    }
-
-    private String imageJS() {
-        return "javascript:(function () {\n" +
-                "  var w = \" + 200px + \";\n" +
-                "  for( var i = 0; i < document.images.length; i++ ) {\n" +
-                "    var img = document.images[i];\n" +
-                "    if( img.width > w ) {\n" +
-                "      img.height = Math.round( img.height * ( w/img.width ) );\n" +
-                "      img.width = w;\n" +
-                "      img.style.display='block';\n" +
-                "    };\n" +
-                "  }\n" +
-                "})();";
     }
 }

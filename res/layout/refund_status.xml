@@ -1,15 +1,140 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
               android:layout_width="fill_parent"
               android:layout_height="fill_parent"
-        >
-    <WebView xmlns:android="http://schemas.android.com/apk/res/android"
-             android:id="@+id/refund_status_webview"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:alwaysDrawnWithCache="false"
-             android:fitsSystemWindows="true">
-    </WebView>
-</LinearLayout>
+              android:stretchColumns="1"
+              android:paddingRight="5dp"
+              android:paddingLeft="5dp"
+              android:orientation="vertical">
+    <TextView android:id="@+id/refund_header"
+              android:textSize="24sp"
+              android:textColor="@android:color/primary_text_dark"
+              android:paddingLeft="5dp"
+              android:paddingRight="10dp"
+              android:layout_height="wrap_content"
+              android:layout_width="wrap_content"/>
+    <TextView android:id="@+id/notification"
+              android:textSize="14sp"
+              android:textColor="@android:color/darker_gray"
+              android:paddingLeft="5dp"
+              android:paddingRight="10dp"
+              android:layout_height="wrap_content"
+              android:layout_width="wrap_content"/>
+    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                 android:layout_width="fill_parent"
+                 android:layout_height="fill_parent"
+                 android:stretchColumns="1"
+                 android:paddingRight="5dp"
+                 android:paddingLeft="5dp">
+        <View android:layout_height="1sp" android:background="#FF909090"/>
+        <TableRow android:id="@+id/payment_mode_row"
+                  android:paddingTop="10dp"
+                  android:paddingBottom="10dp">
 
+            <TextView android:text="@string/payment_mode"
+                      android:textSize="18sp"
+                      android:textColor="@android:color/primary_text_dark"
+                      android:paddingLeft="5dp"
+                      android:paddingRight="10dp"
+                      android:layout_height="match_parent"
+                      android:layout_width="wrap_content"
+                      android:gravity="left"/>
+
+            <TextView android:id="@+id/payment_mode"
+                      android:textSize="16sp"
+                      android:textColor="@android:color/darker_gray"
+                      android:paddingLeft="5dp"
+                      android:paddingRight="10dp"
+                      android:layout_height="match_parent"
+                      android:layout_width="wrap_content"
+                      android:gravity="center_vertical"/>
+        </TableRow>
+        <View android:layout_height="1sp" android:background="#FF909090"/>
+        <TableRow android:id="@+id/reference_number_row"
+                  android:paddingTop="10dp"
+                  android:paddingBottom="10dp">
+
+            <TextView android:text="@string/reference_number"
+                      android:textSize="18sp"
+                      android:textColor="@android:color/primary_text_dark"
+                      android:paddingLeft="5dp"
+                      android:paddingRight="10dp"
+                      android:layout_height="match_parent"
+                      android:layout_width="wrap_content"
+                      android:gravity="left"/>
+
+            <TextView android:id="@+id/reference_number"
+                      android:textSize="16sp"
+                      android:textColor="@android:color/darker_gray"
+                      android:paddingLeft="5dp"
+                      android:paddingRight="10dp"
+                      android:layout_height="match_parent"
+                      android:layout_width="wrap_content"
+                      android:gravity="center_vertical"/>
+        </TableRow>
+        <View android:layout_height="1sp" android:background="#FF909090"/>
+        <TableRow android:id="@+id/status_row"
+                  android:paddingTop="10dp"
+                  android:paddingBottom="10dp">
+
+            <TextView android:text="@string/status"
+                      android:textSize="18sp"
+                      android:textColor="@android:color/primary_text_dark"
+                      android:paddingLeft="5dp"
+                      android:paddingRight="10dp"
+                      android:layout_height="match_parent"
+                      android:layout_width="wrap_content"
+                      android:gravity="left"/>
+
+            <TextView android:id="@+id/refund_status"
+                      android:textSize="12sp"
+                      android:textColor="@android:color/darker_gray"
+                      android:paddingLeft="5dp"
+                      android:paddingRight="10dp"
+                      android:layout_height="wrap_content"
+                      android:layout_width="wrap_content"
+                      android:maxLines="6"
+                      android:lines="6"
+                      android:gravity="left"/>
+        </TableRow>
+        <View android:layout_height="1sp" android:background="#FF909090"/>
+        <TableRow android:id="@+id/date_row"
+                  android:paddingTop="10dp"
+                  android:paddingBottom="10dp">
+
+            <TextView android:text="@string/date"
+                      android:textSize="18sp"
+                      android:textColor="@android:color/primary_text_dark"
+                      android:paddingLeft="5dp"
+                      android:paddingRight="10dp"
+                      android:layout_height="match_parent"
+                      android:layout_width="wrap_content"
+                      android:gravity="left"/>
+
+            <TextView android:id="@+id/refund_date"
+                      android:textSize="16sp"
+                      android:textColor="@android:color/darker_gray"
+                      android:paddingLeft="5dp"
+                      android:paddingRight="10dp"
+                      android:layout_height="match_parent"
+                      android:layout_width="wrap_content"
+                      android:gravity="center_vertical"/>
+        </TableRow>
+        <View android:layout_height="1sp" android:background="#FF909090"/>
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                      android:layout_width="fill_parent"
+                      android:layout_height="fill_parent"
+                      android:stretchColumns="1"
+                      android:paddingTop="15dp"
+                      android:paddingLeft="5dp">
+            <TextView android:text="@string/note"
+                      android:textSize="14sp"
+                      android:textColor="@android:color/secondary_text_dark"
+                      android:paddingLeft="5dp"
+                      android:paddingRight="10dp"
+                      android:layout_height="match_parent"
+                      android:layout_width="wrap_content"/>
+
+        </LinearLayout>
+    </TableLayout>
+</LinearLayout>

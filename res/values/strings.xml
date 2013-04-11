@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Tax Refund Status (Tax Info Network)</string>
+    <string name="app_name">Indian IT Tax Refund Status </string>
     <string name="pan_number">Pan Number</string>
     <string name="pan_hint">Ex., ABXXX1234Y</string>
     <string name="assessment_year">Assessment Year</string>
     <string name="assessment_year_hint">Ex., 2003-2004</string>
     <string name="submit">Submit</string>
+    <string name="refund_status">Refund Status</string>
+    <string name="payment_mode">Mode</string>
+    <string name="reference_number">Ref Number</string>
+    <string name="status">Status</string>
+    <string name="date">Date*</string>
+    <string name="note"> * The date corresponds to the status</string>
 </resources>
