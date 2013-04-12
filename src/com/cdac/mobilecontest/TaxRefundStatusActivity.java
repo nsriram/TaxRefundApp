@@ -37,35 +37,31 @@ public class TaxRefundStatusActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.refund_status);
-
         Intent launchingIntent = getIntent();
         Bundle extras = launchingIntent.getExtras();
-
         panNumber = (String) extras.get("panNumber");
         assessmentYear = (String) extras.get("assessmentYear");
 
-        TextView headerView = (TextView) findViewById(R.id.refund_header);
-        headerView.setText(panNumber + " (" + assessmentYear + ")");
-
-        try {
-            this.progressDialog = ProgressDialog.show(this, "Fetching ...", "Refund Status...", true, true,
-                    new DialogInterface.OnCancelListener() {
-                        @Override
-                        public void onCancel(DialogInterface dialog) {
-                            dialog.dismiss();
-                        }
-                    });
-            new DownloadTask().execute("");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        this.progressDialog = ProgressDialog.show(this, "Fetching ...", "Refund Status...", true, true,
+                new DialogInterface.OnCancelListener() {
+                    @Override
+                    public void onCancel(DialogInterface dialog) {
+                        dialog.dismiss();
+                    }
+                });
+        new DownloadTask().execute("");
     }
 
     private void handleResponse() {
         if (this.progressDialog != null) {
             this.progressDialog.dismiss();
         }
+        setContentView(R.layout.refund_status);
+
+
+        TextView headerView = (TextView) findViewById(R.id.refund_header);
+        headerView.setText(panNumber + " (" + assessmentYear + ")");
+
         String responseHTML = null;
 
         HttpEntity entity = response.getEntity();

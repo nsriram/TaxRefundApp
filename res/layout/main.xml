@@ -44,7 +44,9 @@
                 android:id="@+id/assessment_year"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:drawSelectorOnTop="true"
+                android:prompt="@string/select_assess_year"/>
     </TableRow>
     <View android:layout_height="1sp" android:background="#FF909090"/>
     <TableRow android:id="@+id/submit_row"

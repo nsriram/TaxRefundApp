@@ -3,16 +3,16 @@ package com.cdac.mobilecontest;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
-
-import static android.R.layout.simple_spinner_dropdown_item;
-import static java.util.Arrays.asList;
 
 public class HomeActivity extends Activity {
     private ArrayAdapter<String> spinnerAdapter;
@@ -33,17 +33,31 @@ public class HomeActivity extends Activity {
     }
 
     public void getRefund(View view) throws Exception {
-        Intent taxRefundIntent = new Intent(getApplicationContext(), TaxRefundStatusActivity.class);
-        String panNumber = this.panNumber.getText().toString();
-        taxRefundIntent.putExtra("panNumber", panNumber.toUpperCase());
-        taxRefundIntent.putExtra("assessmentYear",
-                assessmentYears.get(assessmentYear.getSelectedItemPosition()));
-        startActivity(taxRefundIntent);
+        String panNumberValue = this.panNumber.getText().toString();
+        if (!"".equals(panNumberValue)) {
+            Intent taxRefundIntent = new Intent(getApplicationContext(), TaxRefundStatusActivity.class);
+            taxRefundIntent.putExtra("panNumber", panNumberValue.toUpperCase());
+            taxRefundIntent.putExtra("assessmentYear",
+                    assessmentYears.get(assessmentYear.getSelectedItemPosition()));
+            startActivity(taxRefundIntent);
+        } else {
+            Toast.makeText(this, R.string.warning_message, Toast.LENGTH_LONG).show();
+        }
     }
 
     private List<String> years() {
-        assessmentYears = asList("2004-2005", "2005-2006", "2006-2007", "2007-2008", "2008-2009",
-                "2009-2010", "2010-2011");
+        int current = 2004;
+
+        Calendar calendar = Calendar.getInstance();
+        int end = calendar.get(Calendar.YEAR);
+
+        Log.v("currentYear ", current + "");
+        Log.v("endYear ", end + "");
+        assessmentYears = new ArrayList<String>();
+        while (current < end) {
+            assessmentYears.add("" + current + "-" + (current + 1));
+            current++;
+        }
         return assessmentYears;
     }
 }
