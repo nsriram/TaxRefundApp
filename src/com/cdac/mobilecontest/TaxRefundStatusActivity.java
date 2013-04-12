@@ -76,8 +76,8 @@ public class TaxRefundStatusActivity extends Activity {
                     }
                 } else {
                     refundStatus.setText("Refund request for " + panNumber + " not found. \n\n" +
-                            "(a) Your assessing officer has not sent this refund to Refund Banker.\n" +
-                            "(b) If this refund has been sent by your Assessing Officer within the last week, you may wait for a week and again check status.\n");
+                            "(a) Your assessing officer has not sent this refund to Refund Banker.\n\n" +
+                            "(b) If this refund has been sent by your Assessing Officer within the last week, you may wait for a week and again check status.");
                 }
             }
         } catch (Exception e) {
