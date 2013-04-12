@@ -30,9 +30,10 @@ public class TaxRefundStatusActivity extends Activity {
 
     public static final String REFUND_STATUS_URL = "https://tin.tin.nsdl.com/oltas/servlet/TaxRefundStatus";
     private ProgressDialog progressDialog;
-    private HttpResponse response;
     private String panNumber;
     private String assessmentYear;
+    private Elements status;
+    private int responseCode;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -60,25 +61,12 @@ public class TaxRefundStatusActivity extends Activity {
 
         TextView headerView = (TextView) findViewById(R.id.refund_header);
         headerView.setText(panNumber + " (" + assessmentYear + ")");
-
-        String responseHTML = null;
-
-        HttpEntity entity = response.getEntity();
-        if (entity != null) {
-            try {
-                responseHTML = EntityUtils.toString(entity);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
         TextView paymentMode = (TextView) findViewById(R.id.payment_mode);
         TextView referenceNumber = (TextView) findViewById(R.id.reference_number);
         TextView refundStatus = (TextView) findViewById(R.id.refund_status);
         TextView refundDate = (TextView) findViewById(R.id.refund_date);
 
-        if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
-            Document doc = Jsoup.parse(responseHTML);
-            Elements status = doc.select("table.statusTable");
+        if (responseCode == HttpStatus.SC_OK) {
             if (status.size() > 0) {
                 Elements data = status.select("td");
                 if (data.size() >= 4) {
@@ -111,6 +99,20 @@ public class TaxRefundStatusActivity extends Activity {
             try {
                 httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
                 response = httpclient.execute(httppost);
+                String responseHTML = null;
+
+                HttpEntity entity = response.getEntity();
+                if (entity != null) {
+                    try {
+                        responseHTML = EntityUtils.toString(entity);
+                        responseCode = response.getStatusLine().getStatusCode();
+                        Document doc = Jsoup.parse(responseHTML);
+                        status = doc.select("table.statusTable");
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -118,7 +120,23 @@ public class TaxRefundStatusActivity extends Activity {
         }
 
         protected void onPostExecute(HttpResponse response) {
-            TaxRefundStatusActivity.this.response = response;
+            try {
+                String responseHTML = null;
+                HttpEntity entity = response.getEntity();
+                if (entity != null) {
+                    try {
+                        responseHTML = EntityUtils.toString(entity);
+                        Document doc = Jsoup.parse(responseHTML);
+                        TaxRefundStatusActivity.this.responseCode = response.getStatusLine().getStatusCode();
+                        TaxRefundStatusActivity.this.status = doc.select("table.statusTable");
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             Log.d("Data Download", "Executed");
             TaxRefundStatusActivity.this.handleResponse();
         }
