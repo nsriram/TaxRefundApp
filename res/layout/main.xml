@@ -37,12 +37,12 @@
                   android:textColor="@android:color/primary_text_dark"
                   android:paddingLeft="5dp"
                   android:paddingRight="10dp"
-                  android:layout_height="match_parent"
+                  android:layout_height="wrap_content"
                   android:layout_width="wrap_content"
                   android:gravity="center_vertical"/>
         <Spinner
                 android:id="@+id/assessment_year"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1" />
     </TableRow>

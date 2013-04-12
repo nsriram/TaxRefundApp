@@ -11,10 +11,10 @@ import android.widget.Spinner;
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.R.layout.simple_spinner_dropdown_item;
 import static java.util.Arrays.asList;
 
 public class HomeActivity extends Activity {
-    public static final String REFUND_STATUS_URL = "https://tin.tin.nsdl.com/oltas/servlet/TaxRefundStatus";
     private ArrayAdapter<String> spinnerAdapter;
 
     private EditText panNumber;
@@ -26,7 +26,7 @@ public class HomeActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         assessmentYears = years();
-        spinnerAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, assessmentYears);
+        spinnerAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, assessmentYears);
         panNumber = (EditText) findViewById(R.id.pan_number);
         assessmentYear = (Spinner) findViewById(R.id.assessment_year);
         assessmentYear.setAdapter(spinnerAdapter);
