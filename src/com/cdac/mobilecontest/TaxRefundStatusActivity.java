@@ -26,6 +26,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.apache.http.util.EntityUtils.toString;
+
 public class TaxRefundStatusActivity extends Activity {
 
     public static final String REFUND_STATUS_URL = "https://tin.tin.nsdl.com/oltas/servlet/TaxRefundStatus";
@@ -85,10 +87,10 @@ public class TaxRefundStatusActivity extends Activity {
         }
     }
 
-    private class DownloadTask extends AsyncTask<String, Void, HttpResponse> {
+    private class DownloadTask extends AsyncTask<String, Void, Integer> {
 
         @Override
-        protected HttpResponse doInBackground(String... strings) {
+        protected Integer doInBackground(String... strings) {
             HttpClient httpclient = new DefaultHttpClient();
             HttpPost httppost = new HttpPost(REFUND_STATUS_URL);
             List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
@@ -96,34 +98,27 @@ public class TaxRefundStatusActivity extends Activity {
             nameValuePairs.add(new BasicNameValuePair("panNumber", panNumber));
             nameValuePairs.add(new BasicNameValuePair("assessmentYear", assessmentYear));
             HttpResponse response = null;
+            HttpEntity entity=null;
             try {
                 httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
                 response = httpclient.execute(httppost);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            return response;
-        }
-
-        protected void onPostExecute(HttpResponse response) {
-            try {
-                String responseHTML = null;
-                HttpEntity entity = response.getEntity();
+                responseCode = response.getStatusLine().getStatusCode();
+                entity = response.getEntity();
                 if (entity != null) {
                     try {
-                        responseHTML = EntityUtils.toString(entity);
-                        Document doc = Jsoup.parse(responseHTML);
-                        TaxRefundStatusActivity.this.responseCode = response.getStatusLine().getStatusCode();
-                        TaxRefundStatusActivity.this.status = doc.select("table.statusTable");
+                        Document doc = Jsoup.parse(EntityUtils.toString(entity));
+                        status = doc.select("table.statusTable");
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
                 }
-
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            Log.d("Data Download", "Executed");
+            return responseCode;
+        }
+
+        protected void onPostExecute(Integer responseCode) {
             TaxRefundStatusActivity.this.handleResponse();
         }
     }
