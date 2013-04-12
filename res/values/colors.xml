@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <drawable name="background">#262626</drawable>
+    <drawable name="row_item">#434343</drawable>
+    <drawable name="text_color">#EAEAEA</drawable>
+    <drawable name="button_color">#515151</drawable>
+</resources>

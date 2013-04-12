@@ -4,15 +4,34 @@
              android:layout_height="fill_parent"
              android:stretchColumns="1"
              android:paddingRight="5dp"
-             android:paddingLeft="5dp">
+             android:paddingLeft="5dp"
+             android:background="@drawable/background">
+    <TableRow android:id="@+id/submit_row"
+              android:paddingTop="20dp"
+              android:paddingBottom="10dp">
+        <TextView android:text="@string/app_name"
+                  android:textSize="22sp"
+                  android:textColor="@drawable/text_color"
+                  android:paddingLeft="5dp"
+                  android:paddingRight="10dp"
+                  android:layout_height="match_parent"
+                  android:layout_width="wrap_content"
+                  android:layout_span="2"
+                  android:layout_gravity="center"
+                  android:gravity="center_vertical"/>
+    </TableRow>
+
+    <View android:layout_height="1sp" android:background="@drawable/text_color"/>
+    <View android:layout_height="4sp" android:background="@drawable/background"/>
 
     <TableRow android:id="@+id/pan_row"
-              android:paddingTop="10dp"
-              android:paddingBottom="10dp">
+              android:paddingTop="5dp"
+              android:paddingBottom="5dp"
+              android:background="@drawable/shapes">
 
         <TextView android:text="@string/pan_number"
                   android:textSize="17sp"
-                  android:textColor="@android:color/primary_text_dark"
+                  android:textColor="@drawable/text_color"
                   android:paddingLeft="5dp"
                   android:paddingRight="10dp"
                   android:layout_height="match_parent"
@@ -27,35 +46,40 @@
                   android:layout_height="match_parent"
                   android:gravity="center_vertical"/>
     </TableRow>
-    <View android:layout_height="1sp" android:background="#FF909090"/>
+    <View android:layout_height="4sp" android:background="@drawable/background"/>
     <TableRow android:id="@+id/assess_row"
-              android:paddingTop="10dp"
-              android:paddingBottom="10dp">
+              android:paddingTop="5dp"
+              android:paddingBottom="5dp"
+              android:background="@drawable/shapes">
 
         <TextView android:text="@string/assessment_year"
                   android:textSize="17sp"
-                  android:textColor="@android:color/primary_text_dark"
+                  android:textColor="@drawable/text_color"
                   android:paddingLeft="5dp"
                   android:paddingRight="10dp"
-                  android:layout_height="wrap_content"
+                  android:layout_height="match_parent"
                   android:layout_width="wrap_content"
                   android:gravity="center_vertical"/>
         <Spinner
                 android:id="@+id/assessment_year"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:drawSelectorOnTop="true"
                 android:prompt="@string/select_assess_year"/>
     </TableRow>
-    <View android:layout_height="1sp" android:background="#FF909090"/>
+    <View android:layout_height="4sp" android:background="@drawable/background"/>
     <TableRow android:id="@+id/submit_row"
               android:paddingTop="10dp"
               android:paddingBottom="10dp">
         <Button android:text="@string/submit"
+                android:textColor="@drawable/text_color"
+                android:textSize="20sp"
                 android:layout_height="match_parent"
                 android:layout_width="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/shapes"
                 android:layout_span="2"
+                android:padding="16dp"
                 android:onClick="getRefund"
                 android:id="@+id/save_button"/>
     </TableRow>

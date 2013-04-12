@@ -58,7 +58,6 @@ public class TaxRefundStatusActivity extends Activity {
         }
         setContentView(R.layout.refund_status);
 
-
         TextView headerView = (TextView) findViewById(R.id.refund_header);
         headerView.setText(panNumber + " (" + assessmentYear + ")");
 

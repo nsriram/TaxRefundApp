@@ -2,7 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-        >
+            android:background="@drawable/background">
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                   android:layout_width="fill_parent"
                   android:layout_height="fill_parent"
@@ -11,19 +11,23 @@
                   android:paddingLeft="5dp"
                   android:paddingBottom="10dp"
                   android:paddingTop="10dp"
-                  android:orientation="vertical">
+                  android:orientation="vertical"
+                  android:background="@drawable/background">
         <TextView android:id="@+id/refund_header"
                   android:textSize="24sp"
-                  android:textColor="@android:color/primary_text_dark"
+                  android:textColor="@drawable/text_color"
                   android:paddingLeft="5dp"
                   android:paddingRight="10dp"
                   android:layout_height="wrap_content"
                   android:layout_width="wrap_content"
+                  android:layout_gravity="center"
                   android:gravity="center"
                 />
+        <View android:layout_height="1sp" android:layout_width="match_parent" android:background="@drawable/text_color"/>
+        <View android:layout_height="4sp" android:layout_width="match_parent" android:background="@drawable/background"/>
         <TextView android:id="@+id/refund_status"
-                  android:textSize="16sp"
-                  android:textColor="@android:color/darker_gray"
+                  android:textSize="17sp"
+                  android:textColor="@drawable/text_color"
                   android:paddingLeft="5dp"
                   android:paddingRight="10dp"
                   android:paddingBottom="10dp"
@@ -36,10 +40,11 @@
                      android:stretchColumns="1"
                      android:paddingRight="5dp"
                      android:paddingLeft="5dp">
-            <View android:layout_height="1sp" android:background="#FF909090"/>
+            <View android:layout_height="3sp" android:background="@drawable/background"/>
             <TableRow android:id="@+id/payment_mode_row"
                       android:paddingTop="10dp"
-                      android:paddingBottom="10dp">
+                      android:paddingBottom="10dp"
+                      android:background="@drawable/shapes">
 
                 <TextView android:text="@string/payment_mode"
                           android:textSize="18sp"
@@ -59,10 +64,11 @@
                           android:layout_width="wrap_content"
                           android:gravity="center_vertical"/>
             </TableRow>
-            <View android:layout_height="1sp" android:background="#FF909090"/>
+            <View android:layout_height="3sp" android:background="@drawable/background"/>
             <TableRow android:id="@+id/reference_number_row"
                       android:paddingTop="10dp"
-                      android:paddingBottom="10dp">
+                      android:paddingBottom="10dp"
+                      android:background="@drawable/shapes">
 
                 <TextView android:text="@string/reference_number"
                           android:textSize="18sp"
@@ -82,10 +88,11 @@
                           android:layout_width="wrap_content"
                           android:gravity="center_vertical"/>
             </TableRow>
-            <View android:layout_height="1sp" android:background="#FF909090"/>
+            <View android:layout_height="3sp" android:background="@drawable/background"/>
             <TableRow android:id="@+id/date_row"
                       android:paddingTop="10dp"
-                      android:paddingBottom="10dp">
+                      android:paddingBottom="10dp"
+                      android:background="@drawable/shapes">
 
                 <TextView android:text="@string/date"
                           android:textSize="18sp"
@@ -105,7 +112,7 @@
                           android:layout_width="wrap_content"
                           android:gravity="center_vertical"/>
             </TableRow>
-            <View android:layout_height="1sp" android:background="#FF909090"/>
+            <View android:layout_height="1sp" android:background="@drawable/background"/>
             <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                           android:layout_width="fill_parent"
                           android:layout_height="fill_parent"
