@@ -99,20 +99,6 @@ public class TaxRefundStatusActivity extends Activity {
             try {
                 httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
                 response = httpclient.execute(httppost);
-                String responseHTML = null;
-
-                HttpEntity entity = response.getEntity();
-                if (entity != null) {
-                    try {
-                        responseHTML = EntityUtils.toString(entity);
-                        responseCode = response.getStatusLine().getStatusCode();
-                        Document doc = Jsoup.parse(responseHTML);
-                        status = doc.select("table.statusTable");
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-
             } catch (Exception e) {
                 e.printStackTrace();
             }
