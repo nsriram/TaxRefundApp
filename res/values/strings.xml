@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Income Tax Refund Status </string>
+    <string name="app_name">IT Refund</string>
+    <string name="app_header">Income Tax Refund Status </string>
     <string name="pan_number">PAN Number</string>
     <string name="pan_hint">Ex., ABXXX1234Y</string>
     <string name="assessment_year">Assess Year</string>
