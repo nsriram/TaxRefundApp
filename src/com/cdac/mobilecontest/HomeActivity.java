@@ -50,9 +50,6 @@ public class HomeActivity extends Activity {
 
         Calendar calendar = Calendar.getInstance();
         int end = calendar.get(Calendar.YEAR);
-
-        Log.v("currentYear ", current + "");
-        Log.v("endYear ", end + "");
         assessmentYears = new ArrayList<String>();
         while (current < end) {
             assessmentYears.add("" + current + "-" + (current + 1));

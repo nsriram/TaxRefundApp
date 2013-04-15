@@ -98,19 +98,16 @@ public class TaxRefundStatusActivity extends Activity {
             nameValuePairs.add(new BasicNameValuePair("panNumber", panNumber));
             nameValuePairs.add(new BasicNameValuePair("assessmentYear", assessmentYear));
             HttpResponse response = null;
-            HttpEntity entity=null;
+            HttpEntity entity = null;
             try {
                 httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
                 response = httpclient.execute(httppost);
                 responseCode = response.getStatusLine().getStatusCode();
                 entity = response.getEntity();
                 if (entity != null) {
-                    try {
-                        Document doc = Jsoup.parse(EntityUtils.toString(entity));
-                        status = doc.select("table.statusTable");
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                    String responseHTML = EntityUtils.toString(entity);
+                    Document doc = Jsoup.parse(responseHTML);
+                    status = doc.select("table.statusTable");
                 }
             } catch (Exception e) {
                 e.printStackTrace();
